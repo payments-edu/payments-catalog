@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "paymentscatalog",
+    "packageName": "com.edh.catalog.payments",
+    "packageFolder": "com/edh/catalog/payments",
+    "serverPort": 8080,
+    "serviceDiscoveryType": false,
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "gatling"
+    ],
+    "enableTranslation": false,
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.8.1",
+    "jwtSecretKey": "YzIxYmQ1OWQwZTFhZDZjNDNkNGRhMTAxYmUzYjRiZTBkZWQ0OGUzMzdhNDIwOWY4YzU5YmNjYzE3YmUyZGE3NWNkNTA3Yjc4NjU2NTVlMTM5YmRjZjg4ZTExMWVmODUyZGY4YTFkNTdlZjA4ZWRhNTg1ZmIyZjJlNmMzYTg5NGM=",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "payments-edu",
+  "repository-name": "payments-catalog"
+}
