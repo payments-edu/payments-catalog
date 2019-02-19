@@ -1,0 +1,37 @@
+
+entity BinInfo {
+	 bin String
+     countryId Integer
+}
+
+entity CardBrand {
+	code String,
+    name String,
+    priority Integer,
+    url String,
+    phone String
+}
+
+entity CardType {
+	name String
+}
+
+entity CardLevel {
+	name String
+}
+
+entity Bank {
+	name String
+    swiftCode String
+    priority Integer
+	url String
+    phone String
+    countryId Integer
+}
+
+relationship ManyToOne {
+    BinInfo{type} to CardType
+    BinInfo{level} to CardLevel
+    BinInfo{cardBrand} to CardBrand
+    BinInfo{bank} to Bank
+}
