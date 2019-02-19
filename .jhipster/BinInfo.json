@@ -1,0 +1,52 @@
+{
+    "name": "BinInfo",
+    "fields": [
+        {
+            "fieldName": "bin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "countryId",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "cardType",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "binInfo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "level",
+            "otherEntityName": "cardLevel",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "binInfo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "cardBrand",
+            "otherEntityName": "cardBrand",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "binInfo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "bank",
+            "otherEntityName": "bank",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "binInfo"
+        }
+    ],
+    "changelogDate": "20190219215830",
+    "entityTableName": "bin_info",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

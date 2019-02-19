@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity BinInfo.
+    -->
+    <changeSet id="20190219215830-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="bin_info"
+                                 constraintName="fk_bin_info_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="level_id"
+                                 baseTableName="bin_info"
+                                 constraintName="fk_bin_info_level_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card_level"/>
+
+        <addForeignKeyConstraint baseColumnNames="card_brand_id"
+                                 baseTableName="bin_info"
+                                 constraintName="fk_bin_info_card_brand_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card_brand"/>
+
+        <addForeignKeyConstraint baseColumnNames="bank_id"
+                                 baseTableName="bin_info"
+                                 constraintName="fk_bin_info_bank_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bank"/>
+
+    </changeSet>
+</databaseChangeLog>

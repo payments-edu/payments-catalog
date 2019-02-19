@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-bin-info-heading">Create or edit a Bin Info</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!binInfo.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="binInfo.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bin">Bin</label>
+                    <input type="text" class="form-control" name="bin" id="field_bin"
+                        [(ngModel)]="binInfo.bin" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_countryId">Country Id</label>
+                    <input type="number" class="form-control" name="countryId" id="field_countryId"
+                        [(ngModel)]="binInfo.countryId" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" [(ngModel)]="binInfo.type" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cardTypeOption.id === binInfo.type?.id ? binInfo.type : cardTypeOption" *ngFor="let cardTypeOption of cardtypes; trackBy: trackCardTypeById">{{cardTypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_level">Level</label>
+                    <select class="form-control" id="field_level" name="level" [(ngModel)]="binInfo.level" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cardLevelOption.id === binInfo.level?.id ? binInfo.level : cardLevelOption" *ngFor="let cardLevelOption of cardlevels; trackBy: trackCardLevelById">{{cardLevelOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cardBrand">Card Brand</label>
+                    <select class="form-control" id="field_cardBrand" name="cardBrand" [(ngModel)]="binInfo.cardBrand" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cardBrandOption.id === binInfo.cardBrand?.id ? binInfo.cardBrand : cardBrandOption" *ngFor="let cardBrandOption of cardbrands; trackBy: trackCardBrandById">{{cardBrandOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bank">Bank</label>
+                    <select class="form-control" id="field_bank" name="bank" [(ngModel)]="binInfo.bank" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bankOption.id === binInfo.bank?.id ? binInfo.bank : bankOption" *ngFor="let bankOption of banks; trackBy: trackBankById">{{bankOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
