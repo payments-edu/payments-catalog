@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span>Bin Infos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-bin-info" [routerLink]="['/bin-info/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Bin Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="binInfos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Bin</span></th>
+            <th><span>Country Id</span></th>
+            <th><span>Type</span></th>
+            <th><span>Level</span></th>
+            <th><span>Card Brand</span></th>
+            <th><span>Bank</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let binInfo of binInfos ;trackBy: trackId">
+                <td><a [routerLink]="['/bin-info', binInfo.id, 'view' ]">{{binInfo.id}}</a></td>
+                <td>{{binInfo.bin}}</td>
+                <td>{{binInfo.countryId}}</td>
+                <td>
+                    <div *ngIf="binInfo.type">
+                        <a [routerLink]="['../card-type', binInfo.type?.id, 'view' ]" >{{binInfo.type?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="binInfo.level">
+                        <a [routerLink]="['../card-level', binInfo.level?.id, 'view' ]" >{{binInfo.level?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="binInfo.cardBrand">
+                        <a [routerLink]="['../card-brand', binInfo.cardBrand?.id, 'view' ]" >{{binInfo.cardBrand?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="binInfo.bank">
+                        <a [routerLink]="['../bank', binInfo.bank?.id, 'view' ]" >{{binInfo.bank?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/bin-info', binInfo.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/bin-info', binInfo.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'bin-info', { outlets: { popup: binInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
