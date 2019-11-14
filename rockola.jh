@@ -1,0 +1,76 @@
+
+entity Playlist {
+	name String required minlength(8) maxlength(20)
+    password String
+    visible Boolean required
+    active Boolean required
+}
+
+entity Song{
+	name String required
+    source String required
+    randomized Boolean required
+}
+
+entity SongHistory {
+	reproductionDate LocalDate
+}
+
+entity Tag {
+    value String required
+}
+
+entity TagType {
+	name String required
+}
+
+entity User {
+
+}
+
+entity Authority {
+
+}
+
+entity Subscription {
+	playlistRole PlaylistRole,
+    remainingTips Integer
+}
+
+entity Provider {
+	name String required
+    clazz String required
+}
+
+entity PlaylistProvider {
+	active Boolean required
+    order Integer
+}
+
+entity SongTag {}
+entity PlaylistTag {}
+
+enum PlaylistRole {
+	CREATOR, MODERATOR, CONTRIBUTOR, LISTENER
+}
+
+relationship ManyToMany {
+    User to Authority
+}
+relationship ManyToOne {
+	Tag to TagType
+    Song to SongTag
+    Tag to SongTag
+    Playlist to PlaylistTag
+    Tag to PlaylistTag
+    Subscription{user} to User,
+    Subscription{playlist} to Playlist
+    Song{provider} to PlaylistProvider
+}
+relationship OneToMany {
+	SongHistory{song} to Song
+    SongHistory{playlist} to Playlist
+	Playlist{currentSongs} to Song
+    PlaylistProvider{playlist} to Playlist
+    PlaylistProvider{provider} to Provider   
+}
